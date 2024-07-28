@@ -204,12 +204,14 @@ def store_intermediate_result(eval_count, parameters, mean, std):
 
 # initialize VQE using CVaR with alpha = 0.1
 
+params = np.loadtxt('parameter.txt')
+
 vqe = SamplingVQE(
     sampler,
     ansatz=ansatz,
     optimizer=optimizer,
 #     aggregation=0.1,
-#     initial_point = params,
+    initial_point = params,
     callback=store_intermediate_result,
     )
 
